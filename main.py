@@ -32,16 +32,13 @@ motorC = LargeMotor(OUTPUT_C) # Magnet
 
 # Here is where your code starts
 
-target = None
-ajuste = None
-sensor = None
-error = None
-
-
-tank_drive.on(80, 80)
 target = 50
-ajuste = 0.7
+
+velocidade = 40
+ajuste = 1.8
+
+tank_drive.on(velocidade, velocidade)
 while True:
     sensor = color_sensor_in1.reflected_light_intensity
     error = sensor - target
-    steering_drive.on((error * ajuste), 80)
+    steering_drive.on((error * ajuste), velocidade)
